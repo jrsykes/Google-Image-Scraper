@@ -42,7 +42,7 @@ n_processes = mp.cpu_count()
     python Google-Image-Scraper/main.py /search_keys.csv /final_image_dir
     _n.b. you may need to update the google driver in the Google-Image-Scraper dir_
     ```
-_The following structions refer to the original code and not this fork and so may be confuising. Good luck :V:
+_The following structions refer to the original code and not this fork and so may be confuising. Good luck :v:
 ## Usage:
 ```python
 #Import libraries (Don't change)
