@@ -41,7 +41,7 @@ class GoogleImageScraper():
                 if(headless):
                     options.add_argument('--headless')
                 #driver = webdriver.Chrome(webdriver_path, chrome_options=options)
-                driver = webdriver.Chrome('/home/jamiesykes/Downloads/Google-Image-Scraper/chromedriver', chrome_options=options)
+                driver = webdriver.Chrome('/home/jamiesykes/Documents/Google-Image-Scraper/chromedriver', chrome_options=options)
                 driver.set_window_size(1400,1050)
                 driver.get("https://www.google.com")
                 break

@@ -21,7 +21,7 @@ if __name__ == "__main__":
 
     #Parameters
     number_of_images = 1000
-    headless = False
+    headless = True
     min_resolution=(99,99)
     max_resolution=(9999,9999)
 
