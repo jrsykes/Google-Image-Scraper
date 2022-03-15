@@ -1,11 +1,32 @@
 # Google Image Scraper
 A library to scrap google images
 
+## This Fork
+Adds the ability to iterate over seach keys from a csv file in the following format:
+
+cedrus ,.,Sirococcus blight,Sirococcus tsugae
+Chamaecyparis ,.,ceder root diease,Phytophthora lateralis
+Chamaecyparis ,.,Coryneum canker,Seiridium cardinale
+Chamaecyparis ,.,Phytophthora root rot,Phytophthora 
+Thuja plicata,.,Thuja blight,Didymascella thujina
+Abies bornmuelleriana,.,.,.
+
+In this case I was searching for images of tree and crops species with and without disease. Hence, 'Healthy' and 'Diseased' in main.py and in the output diectory.
+The healthy images will crome from the first two search keys in each row and the diseased images will come from all keys per row.
+
+Run this tool with the following command:
+
+
+_n.b. This program is currentley set to utilise all cores on a given machine. If maxing out your abndwidth is likley to be an issue, edit the following line in main.py:_
+n_processes = mp.cpu_count()
+
 ## Pre-requisites:
 1. Pip install Selenium Library
 2. Pip install PIL
-3. Download Google Chrome 
-4. Download Google Webdriver based on your Chrome version
+3. multiprocessing
+4. pandas
+5. Download Google Chrome 
+6. Download Google Webdriver based on your Chrome version
 
 ## Setup:
 1. Open cmd
@@ -19,9 +40,10 @@ A library to scrap google images
     ```
 4. Run the code
     ```
-    python main.py
+    python Google-Image-Scraper/main.py /search_keys.csv /final_image_dir
+    _n.b. you may need to update the google driver in the Google-Image-Scraper dir
     ```
-
+_The following structions refer to the original code and not this fork
 ## Usage:
 ```python
 #Import libraries (Don't change)
@@ -32,9 +54,6 @@ from patch import webdriver_executable
 #Define file path (Don't change)
 webdriver_path = os.path.normpath(os.path.join(os.getcwd(), 'webdriver', webdriver_executable()))
 image_path = os.path.normpath(os.path.join(os.getcwd(), 'photos'))
-
-#Add new search key into array ["cat","t-shirt","apple","orange","pear","fish"]
-search_keys= ["cat","t-shirt"]
 
 #Parameters
 number_of_images = 10
