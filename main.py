@@ -2,7 +2,7 @@
 """
 Created on Sun Jul 12 11:02:06 2020
 
-@author: OHyic
+@author: jrsykes
 
 """
 #Import libraries
@@ -16,14 +16,12 @@ import sys
 
 if __name__ == "__main__":
     #Define file path
-    dataset = sys.argv[1]
-    im_path = sys.argv[2]
+    dataset = sys.argv[1] # Your dataset of search keys
+    im_path = sys.argv[2] # Final image dataset path
 
-    webdriver_path = os.path.join(os.getcwd(), 'Google-Image-Scraper/chromedriver')#    os.path.normpath(os.path.join(os.getcwd(), 'webdriver', webdriver_executable()))
+    webdriver_path = os.path.join(os.getcwd(), 'Google-Image-Scraper/chromedriver')
     image_path = os.path.normpath(os.path.join(os.getcwd(), 'photos'))
 
-    #Add new search key into array ["cat","t-shirt","apple","orange","pear","fish"]
-    #search_keys= ['cedrus cedar Sirococcus blight Sirococcus tsugae']
 
     #Parameters
     number_of_images = 1000
@@ -39,14 +37,13 @@ if __name__ == "__main__":
                 else:
                     search_keys = list(row)
             
-            #image_path = '/home/jamiesykes/Downloads/images/' + (search_keys[0] + i).replace(' ', '_')            
                 image_path = os.path.join(im_path, (search_keys[0] + i).replace(' ', '_'))            
 
                 search_key = ' '.join(str(x) for x in search_keys)
 #Main program
                 if i == 'Healthy' and os.path.isdir(image_path) == False:
                     url_lst = []
-                    for i in range(10):
+                    for i in range(10): # Do ten times to compensate for inconsistant results. A little hacky, I know.
                         image_scrapper = GoogleImageScraper(webdriver_path,image_path,search_key,number_of_images,
                             headless,min_resolution,max_resolution)
                         url_lst.append(image_scrapper.find_image_urls())
@@ -58,7 +55,7 @@ if __name__ == "__main__":
 
                 if i == 'Diseased':
                     url_lst = []
-                    for i in range(10):
+                    for i in range(10): 
                         image_scrapper = GoogleImageScraper(webdriver_path,image_path,search_key,number_of_images,
                             headless,min_resolution,max_resolution)
                         url_lst.append(image_scrapper.find_image_urls())
@@ -69,7 +66,7 @@ if __name__ == "__main__":
             #Release resources    
             del image_scrapper
     
-
+    # Multiprocessing
     data_base_path = dataset
     df = pd.read_csv(data_base_path, header=None)
 
