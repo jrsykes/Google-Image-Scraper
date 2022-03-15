@@ -44,7 +44,7 @@ n_processes = mp.cpu_count()
     ```
 
 ## Usage:
-The following instructions refer to the original code, not this fork, and so may be confuising. Good luck :v:
+The following instructions refer to the original code, not this fork. So may be confuising. Good luck :v:
 ```python
 #Import libraries (Don't change)
 from GoogleImageScrapper import GoogleImageScraper
