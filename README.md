@@ -16,7 +16,7 @@ Adds the ability to iterate over seach keys from a csv file in the following for
 In this case I was searching for images of tree and crops species with and without disease. Hence, 'Healthy' and 'Diseased' in main.py and in the output diectory.
 The healthy images will crome from the first two search keys in each row and the diseased images will come from all keys per row.
 
-_n.b. This program is currentley set to utilise all cores on a given machine. If maxing out your abndwidth is likley to be an issue, edit the following line in main.py:_
+_n.b. This program is currentley set to utilise all cores on a given machine. If maxing out your bandwidth is likley to be an issue, edit the following line in main.py:_
 n_processes = mp.cpu_count()
 
 ## Pre-requisites:
