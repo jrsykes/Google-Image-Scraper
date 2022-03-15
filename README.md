@@ -31,18 +31,18 @@ n_processes = mp.cpu_count()
 1. Open cmd
 2. Clone the repository (or [download](https://github.com/ohyicong/Google-Image-Scraper/archive/refs/heads/master.zip))
     ```
-    git clone https://github.com/ohyicong/Google-Image-Scraper
+    git clone https://github.com/jrsykes/Google-Image-Scraper.git
     ```
 3. Install Dependencies
     ```
-    pip install selenium, requests, pillow
+    pip install selenium, requests, pillow, _etc._
     ```
 4. Run the code
     ```
     python Google-Image-Scraper/main.py /search_keys.csv /final_image_dir
-    _n.b. you may need to update the google driver in the Google-Image-Scraper dir
+    _n.b. you may need to update the google driver in the Google-Image-Scraper dir_
     ```
-_The following structions refer to the original code and not this fork
+_The following structions refer to the original code and not this fork and so may be confuising. Good luck :V:
 ## Usage:
 ```python
 #Import libraries (Don't change)
