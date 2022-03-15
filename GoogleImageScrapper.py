@@ -40,8 +40,8 @@ class GoogleImageScraper():
                 options = Options()
                 if(headless):
                     options.add_argument('--headless')
-                #driver = webdriver.Chrome(webdriver_path, chrome_options=options)
-                driver = webdriver.Chrome('/home/jamiesykes/Documents/Google-Image-Scraper/chromedriver', chrome_options=options)
+                driver = webdriver.Chrome(webdriver_path, chrome_options=options)
+                #driver = webdriver.Chrome('./chromedriver', chrome_options=options)
                 driver.set_window_size(1400,1050)
                 driver.get("https://www.google.com")
                 break
@@ -80,7 +80,7 @@ class GoogleImageScraper():
         #Delete all cookies
         self.driver.delete_all_cookies()
         self.driver.get(self.url)
-        #time.sleep(3)
+        time.sleep(0.1)
         indx = 1
         while self.number_of_images > count:
             try:
@@ -98,7 +98,7 @@ class GoogleImageScraper():
             
             try:
                 #select image from the popup
-                #time.sleep(1)
+                time.sleep(0.1)
                 class_names = ["n3VNCb"]
                 images = [self.driver.find_elements_by_class_name(class_name) for class_name in class_names if len(self.driver.find_elements_by_class_name(class_name)) != 0 ][0]
                 for image in images:
@@ -120,7 +120,7 @@ class GoogleImageScraper():
                 element = self.driver.find_element_by_class_name("mye4qd")
                 element.click()
                 print("[INFO] Loading more photos")
-                #time.sleep(3)
+                time.sleep(0.1)
             except Exception:
                 pass
                 #time.sleep(1)
