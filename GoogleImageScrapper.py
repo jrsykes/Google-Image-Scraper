@@ -26,7 +26,7 @@ import patch
 class GoogleImageScraper():
     def __init__(self,webdriver_path,image_path, search_key="cat",number_of_images=1,headless=False,min_resolution=(0,0),max_resolution=(1920,1080)):
         #check parameter types
-        image_path = os.path.join(image_path, search_key)
+        #image_path = os.path.join(image_path, search_key)
         if (type(number_of_images)!=int):
             print("[Error] Number of images must be integer value.")
             return
@@ -40,7 +40,8 @@ class GoogleImageScraper():
                 options = Options()
                 if(headless):
                     options.add_argument('--headless')
-                driver = webdriver.Chrome(webdriver_path, chrome_options=options)
+                #driver = webdriver.Chrome(webdriver_path, chrome_options=options)
+                driver = webdriver.Chrome('/home/jamiesykes/Downloads/Google-Image-Scraper/chromedriver', chrome_options=options)
                 driver.set_window_size(1400,1050)
                 driver.get("https://www.google.com")
                 break
@@ -71,14 +72,15 @@ class GoogleImageScraper():
             Example:
                 google_image_scraper = GoogleImageScraper("webdriver_path","image_path","search_key",number_of_photos)
                 image_urls = google_image_scraper.find_image_urls()
-                
         """
         print("[INFO] Scraping for image link... Please wait.")
         image_urls=[]
         count = 0
         missed_count = 0
+        #Delete all cookies
+        self.driver.delete_all_cookies()
         self.driver.get(self.url)
-        time.sleep(3)
+        #time.sleep(3)
         indx = 1
         while self.number_of_images > count:
             try:
@@ -87,15 +89,16 @@ class GoogleImageScraper():
                 imgurl.click()
                 missed_count = 0 
             except Exception:
-                #print("[-] Unable to click this photo.")
+                print("[-] Unable to click this photo.")
                 missed_count = missed_count + 1
                 if (missed_count>10):
                     print("[INFO] No more photos.")
                     break
                  
+            
             try:
                 #select image from the popup
-                time.sleep(1)
+                #time.sleep(1)
                 class_names = ["n3VNCb"]
                 images = [self.driver.find_elements_by_class_name(class_name) for class_name in class_names if len(self.driver.find_elements_by_class_name(class_name)) != 0 ][0]
                 for image in images:
@@ -107,18 +110,20 @@ class GoogleImageScraper():
                         count +=1
                         break
             except Exception:
+    
                 print("[INFO] Unable to get link")   
                 
             try:
                 #scroll page to load next image
-                if(count%3==0):
+                if count > 0 and (count%3==0):
                     self.driver.execute_script("window.scrollTo(0, "+str(indx*60)+");")
                 element = self.driver.find_element_by_class_name("mye4qd")
                 element.click()
                 print("[INFO] Loading more photos")
-                time.sleep(3)
-            except Exception:  
-                time.sleep(1)
+                #time.sleep(3)
+            except Exception:
+                pass
+                #time.sleep(1)
             indx += 1
 
         
