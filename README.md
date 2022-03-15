@@ -4,7 +4,9 @@ A library to scrap google images
 ## This Fork
 Adds the ability to iterate over seach keys from a csv file in the following format:
 
-cedrus ,.,Sirococcus blight,Sirococcus tsugae
+| Species | Taxon | Disease name | Causative agent |
+| ------- | ----- | ------------ | --------------- |
+|cedrus |.|Sirococcus blight|Sirococcus tsugae|
 Chamaecyparis ,.,ceder root diease,Phytophthora lateralis
 Chamaecyparis ,.,Coryneum canker,Seiridium cardinale
 Chamaecyparis ,.,Phytophthora root rot,Phytophthora 
@@ -13,9 +15,6 @@ Abies bornmuelleriana,.,.,.
 
 In this case I was searching for images of tree and crops species with and without disease. Hence, 'Healthy' and 'Diseased' in main.py and in the output diectory.
 The healthy images will crome from the first two search keys in each row and the diseased images will come from all keys per row.
-
-Run this tool with the following command:
-
 
 _n.b. This program is currentley set to utilise all cores on a given machine. If maxing out your abndwidth is likley to be an issue, edit the following line in main.py:_
 n_processes = mp.cpu_count()
