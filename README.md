@@ -6,7 +6,7 @@ Adds the ability to iterate over seach keys from a csv file in the following for
 
 | Species | Taxon | Disease name | Causative agent |
 | ------- | ----- | ------------ | --------------- |
-|cedrus |.|Sirococcus blight|Sirococcus tsugae|
+|Cedrus |.|Sirococcus blight|Sirococcus tsugae|
 |Chamaecyparis |.|ceder root diease|Phytophthora lateralis|
 |Chamaecyparis |.|Coryneum canker|Seiridium cardinale|
 |Chamaecyparis |.|Phytophthora root rot|Phytophthora|
