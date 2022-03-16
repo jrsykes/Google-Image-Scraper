@@ -43,7 +43,7 @@ if __name__ == "__main__":
 #Main program
                 if i == 'Healthy' and os.path.isdir(image_path) == False:
                     url_lst = []
-                    for i in range(10): # Do ten times to compensate for inconsistant results. A little hacky, I know.
+                    for i in range(10): # Do ten times to compensate for inconsistant results. A little hacky, I know but it still doesn't really work.
                         image_scrapper = GoogleImageScraper(webdriver_path,image_path,search_key,number_of_images,
                             headless,min_resolution,max_resolution)
                         url_lst.append(image_scrapper.find_image_urls())
@@ -67,13 +67,14 @@ if __name__ == "__main__":
             del image_scrapper
     
     # Multiprocessing
-    data_base_path = dataset
-    df = pd.read_csv(data_base_path, header=None)
+#    data_base_path = dataset
+#    df = pd.read_csv(data_base_path, header=None)#
 
-    n_processes = mp.cpu_count()
-    chunk_size = int(df.shape[0]/n_processes)
-    chunks = [df.iloc[df.index[i:i + chunk_size]] for i in range(0, df.shape[0], chunk_size)]
+#    n_processes = mp.cpu_count()
+#    chunk_size = int(df.shape[0]/n_processes)
+#    chunks = [df.iloc[df.index[i:i + chunk_size]] for i in range(0, df.shape[0], chunk_size)]#
 
-    pool = mp.Pool(processes=n_processes)
-    result = pool.map(run, chunks)
-    pool.close() 
+#    pool = mp.Pool(processes=n_processes)
+#    result = pool.map(run, chunks)
+#    pool.close() 
+    run(df)
